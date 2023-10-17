@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { GiSkills } from "react-icons/gi";
 import PopUpModal from "./components/PopUp/PopUpModal";
-
+import balance from './Image/balance.png'
 function App() {
   const {
     register,
@@ -425,7 +425,8 @@ function App() {
             class="absolute h-full w-20 rounded-full bg-white flex items-center justify-center"
             onClick={() => setOpen(!isOpen)}
           >
-            <GiSkills size={40} className="" />
+            <img src={balance}  className="w-9 h-9" alt=""/>
+            {/* <GiSkills size={40} className="" /> */}
           </button>
         </div>
         {/* {isOpen &&
