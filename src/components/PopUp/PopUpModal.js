@@ -37,7 +37,7 @@ const PopUpModal = () => {
   };
   return (
     <>
-    <div className='bg-gray-900/30 flex items-center justify-center fixed h-screen w-full'  >
+    <div className='bg-gray-900/30 flex items-center justify-center fixed h-screen top-0 w-full'  >
       <div className='w-[70%] bg-white h-[95%]  rounded-3xl p-10' >
         <div className='w-full rtl'>
           <button onClick={()=>setIsOpen(!isOpen)}>
@@ -45,11 +45,11 @@ const PopUpModal = () => {
         </button>
         </div>
           {/* form */}
-          <div className='grid grid-cols-2 gap-2 top-0'>
+          <div className='grid grid-cols-2 gap-2 top-0  border-2 border-[#192655]'>
             <div className='w-full overflow-auto max-h-[80%]'>
-            <label className="font-Vazirmatn w-[85%] text-4xl flex items-center justify-center p-5 font-bold">
+            <div className="font-Vazirmatn w-[100%] text-4xl flex items-center justify-center p-5 font-bold">
               نتیجه
-              </label>
+              </div>
               <div className="w-[85%] flex flex-col gap-2 rtl">
               {calculator.map((item, index) => {
                 let x = calculator.length;
