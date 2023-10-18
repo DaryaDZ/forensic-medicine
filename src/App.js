@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { GiSkills } from "react-icons/gi";
 import PopUpModal from "./components/PopUp/PopUpModal";
-import balance from './Image/balance.png'
+import balance from "./Image/balance.png";
 import Navbar from "./Navbar";
 function App() {
   const {
@@ -30,39 +30,35 @@ function App() {
   ];
   const handleValueChange = (e) => {
     setDiye({ ...diye, [e.target.name]: e.target.value });
-    // setSate(e.target.value)
+    console.log(diye); 
   };
   const submit = () => {
-    // console.log(diye)
-
     let newState = [diye, ...calculator];
     setCalculator(newState);
-    // console.log(newState)
+    console.log(newState);
   };
-  // let x = calculator.length;
   return (
     <>
-      <Navbar/>
-      <div className="bg-[#D6E4E5]  flex  flex-col overflow-none ">
-        {/* <label className="text-4xl bg-[#B2D3BE] mb-10  mt-20 font-bold items-center flex justify-center font-Vazirmatn">
-          محاسبه دیه
-        </label> */}
+      <Navbar />
+      <div className="bg-[#E7E7DE] flex  h-screen flex-col">
+    
         <div className="w-full mt-16 h-full items-center grid grid-cols-2 p-10">
-          <div className="h-[95%] w-full 
-           rounded-3xl bg-white p-2  rtl overflow-auto shadow shadow-2xl">
+          <div
+            className="h-[95%] w-full 
+           rounded-3xl bg-white p-2  rtl overflow-auto shadow shadow-2xl"
+          >
             <div className="font-Vazirmatn w-[100%] rtl text-4xl   p-10 font-bold ">
               نتیجه
             </div>
             <div className="flex items-center justify-center w-full">
-            <hr className="border-2 border-[#B2D3BE] w-[90%]  "/>
-
+              <hr className="border-2 border-[#B2D3BE] w-[90%]  " />
             </div>
-            <div className="w-[98%]  gap-3 p-5 rtl ">
+            <div className="w-[90%]  gap-3 p-5 rtl ">
               {calculator.map((item, index) => {
                 let x = calculator.length;
                 return (
                   <>
-                    <div className="flex flex-col mr-10 ">
+                    <div className="flex flex-col  ">
                       <label className="font-Vazirmatn text-2xl font-bold mt-2">
                         سال دیه :{item.year}
                       </label>
@@ -101,16 +97,15 @@ function App() {
                       ) : (
                         ""
                       )}
-                       <div className="flex items-center justify-center w-full mt-5">
-            <hr className="border-2 border-[#B2D3BE] w-[100%]  "/>
-
-            </div>
+                      <div className="flex items-center justify-center w-full mt-5">
+                        <hr className="border-2 border-[#B2D3BE] w-[100%]  " />
+                      </div>
                     </div>
                     {/* <hr className="border-2 border-[#000]"/> */}
                   </>
                 );
               })}
-              
+
               <div className="w-full flex items-center justify-center">
                 {/* 
                <button className="w-[20%] font-Vazirmatn border-4 p-5 m-5
@@ -166,7 +161,7 @@ function App() {
                 </lable>
                 <input
                   type="radio"
-                  className="mr-24 w-6 h-6 "
+                  className="mr-5 w-6 h-6 "
                   name="gender"
                   value={
                     diye.gender === ""
@@ -183,7 +178,7 @@ function App() {
                 </label>
                 <input
                   type="radio"
-                  className="mr-24 w-6 h-6 "
+                  className="mr-5 w-6 h-6 "
                   name="gender"
                   value={
                     diye.gender === ""
@@ -404,7 +399,7 @@ function App() {
 
                 <div className="w-full font-Vazirmatn  mt-5 flex items-center justify-center ">
                   <button
-                    className="w-[20%] border-4 p-5 m-5
+                    className="w-full border-4 p-5 m-5
                  rounded-full border-[#D7E5CA] bg-[#8EACCD]
                   text-white text-xl font-bold hover:shadow shadow-2xl "
                   >
@@ -412,7 +407,7 @@ function App() {
                   </button>
 
                   <button
-                    className="w-[20%] font-Vazirmatn border-4 p-5 m-5
+                    className="w-full font-Vazirmatn border-4 p-5 m-5
                  rounded-full border-[#D7E5CA] bg-[#D7E5CA]
                  text-xl font-bold hover:shadow shadow-2xl"
                   >
@@ -425,18 +420,248 @@ function App() {
         </div>
 
         {/* Modal */}
-        <div class="relative h-20 mb-10 rounded-full bg-[#D6E4E5] overflow-hidden rtl">
+        <div class="relative h-20 mb-10 rounded-full bg-[#E7E7DE] overflow-hidden rtl">
           <button
             id="progress"
             class="absolute h-full w-20 rounded-full bg-white flex items-center justify-center"
             onClick={() => setOpen(!isOpen)}
           >
-            <img src={balance}  className="w-9 h-9" alt=""/>
+            <img src={balance} className="w-9 h-9" alt="" />
             {/* <GiSkills size={40} className="" /> */}
           </button>
         </div>
-        {isOpen && <PopUpModal/>}
+        {isOpen && <PopUpModal />}
+
+
+
+      </div>
+
+{/* mobile screen */}
+{/* 
+      <div className="bg-[#E7E7DE] md:hidden flex flex-col">
+        <div className="grid grid-rows-2 gap-2 mt-16 p-4">
+          <div className="w-full flex items-center rtl">
+            <div className="w-[]">
+              سال دیه 
+            </div>
+          <select id="yearMobil" 
+                  {...register("yearMobil", {
+                    required: "لطفا سال دیه را وارد کنید ",
+                  })} className=" w-full rtl border-4 rounded-xl h-16 mt-2 text-2xl
+                 flex outline-none mr-10 border-[#8EACCD]">
+            <option></option>
+            {year.map((i) => {
+              return <>
+                <option value={i}>{i}</option>
+              
+              </>
+            })}
+            </select>
+            {errors.yearMobil && (
+                <p className="flex items-center text-red-500 font-Vazirmatn text-xl justify-center font-bold">
+                  {errors.yearMobil.message}
+                </p>
+              )}
+          </div>
+          <div className="w-full flex items-center rtl">
+          <div className="w-[20%]">
+              جنسیت
+            </div>
+            <div className="">
+              <input id="gender"
+               type="radio"
+              />
+              <label>مرد</label>
+              <input
+                type="radio"
+                id="gender"
+              />
+              <label>زن</label>
+            </div>
+          </div>
+          <div className="w-full flex items-center rtl bg-blue-500">
+            <form className="w-full  flex items-center justify-between" onSubmit={handleSubmit(() => {
+                reset();
+                submit(diye);
+              })} >
+              <div className="w-[20%]">نوع دیه</div>
+              <div className="w-full flex flex-col">
+                <select id="typeMobil" {...register("typeMobil", {
+                      required: "نوع دیه را انتخاب کنید.",
+                    })}
+                  name="type"
+                  className=" w-full rtl border-4 rounded-xl h-16  text-lg flex outline-none border-[#8EACCD]"
+                  onChange={handleValueChange}>
+                <option></option>
+                  <option value="جنین">جنین</option>
+                  <option value="قتل نفس">قتل نفس</option>
+                  <option value="اعضای بدن">اعضای بدن</option>
+                </select>
+
+                {errors.typeMobil && (
+                  <p className="flex items-center text-red-500 font-Vazirmatn text-xl justify-center font-bold">
+                    {errors.typeMobil.message}
+                  </p>
+                )}
+
+
+                {diye.type === "جنین" ? <>
+                  <div className="w-full bg-red-500">
+                    <label>بر اساس تکامل جنین</label>
+                    <select  id="fetusMobile"
+                            {...register("fetusMobile", {
+                              required: "وضعیت جنین را مشخص نمایید",
+                            })}
+                      name="fetus" className=" w-full rtl border-4 rounded-xl h-16  text-lg flex outline-none border-[#8EACCD]" onChange={handleValueChange} >
+                    <option></option>
+                            <option value="نطفه ای که در رحم مستقر شده است">
+                              نطفه ای که در رحم مستقر شده است{" "}
+                            </option>
+                            <option value="جنین پسر که روح در آن دمیده شده است">
+                              جنین پسر که روح در آن دمیده شده است.
+                            </option>
+                            <option value="جنین دختر که روح در آن دمیده شده است">
+                              جنین دختر که روح در آن دمیده شده است{" "}
+                            </option>
+                            <option value="چند جنین در یک رحم باشد سقط هر یک از آن ها">
+                              چند جنین در یک رحم باشد سقط هر یک از آن ها
+                            </option>
+                    </select>
+                    
+                </div>
+                  {errors.fetusMobile && (
+                    <p className="flex items-center text-red-500 font-Vazirmatn text-xl justify-center font-bold">
+                      {errors.fetusMobile.message}
+                    </p>)}
+                
+                </> : <>
+                    {diye.type === "قتل نفس" ?
+                      <>
+                        <div className="w-full bg-red-500">
+                          
+                        <input
+                        id="default-checkbox"
+                        type="checkbox"
+                        value="قتل در ماه حرام یا مکه مکرمه واقع شده "
+                        name="kill"
+                        onChange={handleValueChange}
+                        className="w-6 h-6 text-blue-600 bg-gray-100 font-Vazirmatn border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label
+                        for="default-checkbox"
+                        class="ml-2 text-3xl font-Vazirmatn   text-gray-900 dark:text-gray-300 mr-2 "
+                      >
+                        قتل در ماه حرام یا مکه مکرمه واقع شده
+                      </label>
+                      </div>
+                      </>
+                      : <>
+                        {diye.type === "اعضای بدن" ? <>
+                        <div className="w-full grid grid-cols-2 gap-3 mt-5">
+                              
+                              <div>
+                                <label>نام عضو بدن</label>
+                                <select name="bodypartNameMobil" 
+                                  {...register("bodypartNameMobil", {
+                                    required:
+                                      "نام عضو آسیب دیده را انتخاب کنید ",
+                                  })} onChange={handleValueChange}>
+                                <option></option>
+                                      <option value="بینایی">بینایی</option>
+                                      <option value="چشایی">چشایی</option>
+                                  <option value="بینی">بینی</option>
+                                </select>
+                                <label>حالت های نقص عضو</label>
+                                <select id="memberviolationMobil"  onChange={handleValueChange} {...register("memberviolationMobil", {
+                                    required: "حالت نقص عضو را انتخاب کنید ",
+                                  })}> 
+    
+                                {diye.bodypartName === "بینایی" ?
+                                  <>
+                                    
+                                    <option></option>
+                                              <option value="از بین بردن بینایی هر دو ">
+                                                از بین بردن بینایی هر دو چشم{" "}
+                                              </option>
+                                              <option value="از بین بردن بینایی یک چشم">
+                                                از بین بردن بینایی یک چشم{" "}
+                                              </option>
+                                              <option value="از بین بردن یا بیرون آوردن هر یک از دو چشم از حدقه">
+                                                از بین بردن یا بیرون آوردن هر یک از
+                                                دو چشم از حدقه
+                                              </option>
+                                  
+                                  
+                                  </> : <>
+                                    {diye.bodypartName ==="چشایی" ?
+                                  
+                                        <>
+                                        
+                                        <option></option>
+                                              <option value="از بین بردن حس چشایی و نقصان آن">
+                                                از بین بردن حس چشایی و نقصان آن
+                                              </option>
+                                              <option value="قطع تمام زبان +از بین رفتن حس چشایی">
+                                                قطع تمام زبان +از بین رفتن حس چشایی
+                                              </option>
+                                              <option value="اگر با جنایت بر غیر زبان ، چشایی از بین برود یا نقصان پیدا کند">
+                                                اگر با جنایت بر غیر زبان ، چشایی از
+                                                بین برود یا نقصان پیدا کند
+                                              </option>
+                                        
+                                        
+                                        </> : <>
+                                      
+                                          <option></option>
+                                          <option value="قطع کردن یا از بین بردن تمام بینی">
+                                            قطع کردن یا از بین بردن تمام بینی{" "}
+                                          </option>
+                                          <option value="قطع کردن یا از بین بردن نرمه پایین استخوان بینی">
+                                            قطع کردن یا از بین بردن نرمه پایین
+                                            استخوان بینی
+                                          </option>
+                                          <option value="از بین بردن تمام نرمه یا تمام و یا مقداری از استخوانبینی (دفعتا)">
+                                            از بین بردن تمام نرمه یا تمام و یا
+                                            مقداری از استخوان بینی (دفعتا)
+                                          </option>
+                                      
+                                      
+                                      </>
+                                }
+                                  </>
+    }
+                                </select>
+    </div>
+                                  {errors.bodypartNameMobil && (
+                                    <p className="flex items-center text-red-500 font-Vazirmatn text-xl justify-center font-bold rtl">
+                                      {errors.bodypartNameMobil.message}
+                                    </p>
+                                  )}
+                                  {errors.memberviolationMobil && (
+                                    <p className="flex items-center text-red-500 font-Vazirmatn text-xl justify-center font-bold rtl">
+                                      {errors.memberviolationMobil.message}
+                                    </p>
+                                  )}
+                                </div></> : <></>
+                        
+                        
+                        
+                        }
+
+                      </>
+              }
+                
+                
+                </>}
+       
+              </div>
+              <div>
+                <button>افزودن</button>
+</div>
+            </form>
+          </div>
         </div>
+  </div> */}
     </>
   );
 }
