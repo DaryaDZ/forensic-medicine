@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { AiOutlineCloseSquare } from 'react-icons/ai'
 import { useForm } from "react-hook-form";
+import { DataContext } from '../../DataProvider';
 const PopUpModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -9,35 +10,10 @@ const PopUpModal = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const [calculator, setCalculator] = useState([]);
-  const [diye, setDiye] = useState({
-    year: "",
-    gender: "",
-    type: "",
-    bodypartName: "",
-    memberviolation: "",
-    kill: "",
-    fetus: "",
-  });
-  const year = [
-    1375, 1376, 1377, 1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386,
-    1387, 1388, 1398, 1390, 1391, 1392, 1393, 1394, 1395, 1396, 1397, 1398,
-    1399, 1400, 1401, 1402,
-  ];
-  const handleValueChange = (e) => {
-    setDiye({ ...diye, [e.target.name]: e.target.value });
-    // setSate(e.target.value)
-  };
-  const submit = () => {
-    // console.log(diye)
-
-    let newState = [diye, ...calculator];
-    setCalculator(newState);
-    // console.log(newState)
-  };
+  const { year, submit, calculator,diye,handleValueChange } =useContext(DataContext)
   return (
     <>
-    <div className='bg-gray-900/30 flex items-center justify-center fixed h-screen top-0 w-full'  >
+    <div className='bg-gray-900/30 md:flex items-center justify-center fixed h-screen top-0 w-full hidden'  >
       <div className='w-[70%] bg-white h-[95%]  rounded-3xl p-10' >
         <div className='w-full rtl'>
           <button onClick={()=>setIsOpen(!isOpen)}>
@@ -51,8 +27,8 @@ const PopUpModal = () => {
               نتیجه
               </div>
               <div className="w-[85%] flex flex-col gap-2 rtl">
-              {calculator.map((item, index) => {
-                let x = calculator.length;
+              {calculator.map((item) => {
+                // let x = calculator.length;
                 return (
                   <>
                     <div className="flex flex-col">
@@ -425,7 +401,7 @@ const PopUpModal = () => {
         </div>
         {isOpen &&window.location.assign('/')}
     </div>
-    
+
     </>
   )
 }
